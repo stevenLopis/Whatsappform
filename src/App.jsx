@@ -43,7 +43,7 @@ export default function App() {
     
     if (!formData.query.trim()) {
       newErrors.query = "Message is required";
-    } else if (formData.query.length < 10) {
+    } else if (formData.query.length < 1) {
       newErrors.query = "Message must be at least 10 characters";
     }
     
@@ -62,13 +62,7 @@ export default function App() {
 
     const phoneNumber = "8431715675";
 
-    const message = `*🏢 New Contact Form Submission*%0A%0A
-👤 *Name:* ${formData.name}%0A
-📧 *Email:* ${formData.email}%0A
-📱 *Mobile:* ${formData.mobile}%0A
-💬 *Message:* ${formData.query}%0A%0A
-📅 *Date:* ${new Date().toLocaleString()}%0A
-🌐 *Source:* Premium Website`;
+    const message = `🏢 New Contact Form Submission%0A%0A👤 Name: ${formData.name}%0A📧 Email: ${formData.email}%0A📱 Mobile: ${formData.mobile}%0A💬 Message: ${formData.query}`;
 
     const url = `https://wa.me/${phoneNumber}?text=${message}`;
 
@@ -224,9 +218,9 @@ export default function App() {
                     ...(errors.query ? styles.inputError : {})
                   }}
                   placeholder="Your Message"
-                  rows="4"
+                  rows="2"
                 />
-                <span style={styles.charCount}>{formData.query.length}/500</span>
+                <span style={styles.charCount}>/1{formData.query.length}/500</span>
                 {errors.query && <span style={styles.errorMessage}>{errors.query}</span>}
               </div>
 
@@ -429,7 +423,7 @@ const styles = {
 
   formCard: {
     flex: "1",
-    maxWidth: "450px",
+    maxWidth: "600px",
     background: "linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(241, 245, 249, 0.98) 100%)",
     borderRadius: "24px",
     padding: "50px",
@@ -480,8 +474,8 @@ const styles = {
 
   textarea: {
     width: "100%",
-    padding: "16px 20px",
-    fontSize: "15px",
+    padding: "12px 16px",
+    fontSize: "14px",
     border: "2px solid #e2e8f0",
     borderRadius: "12px",
     outline: "none",
@@ -490,12 +484,18 @@ const styles = {
     color: "#1e293b",
     fontFamily: "inherit",
     resize: "vertical",
-    minHeight: "120px",
+    minHeight: "60px",
+    maxHeight: "150px",
   },
 
   inputError: {
     borderColor: "#ef4444",
     background: "#fef2f2",
+  },
+
+  inputSuccess: {
+    borderColor: "#22c55e",
+    background: "#f0fdf4",
   },
 
   errorMessage: {
