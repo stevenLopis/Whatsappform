@@ -220,7 +220,7 @@ export default function App() {
                   placeholder="Your Message"
                   rows="2"
                 />
-                <span style={styles.charCount}>/1{formData.query.length}/500</span>
+                <span style={styles.charCount}>{formData.query.length}/500</span>
                 {errors.query && <span style={styles.errorMessage}>{errors.query}</span>}
               </div>
 
